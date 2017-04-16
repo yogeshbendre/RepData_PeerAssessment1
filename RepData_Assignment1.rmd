@@ -1,12 +1,15 @@
 ---
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
+title: "RepData_Assignment1"
+author: "YSB"
+date: "April 11, 2017"
+output: html_document
 ---
 
+```{r setup, include=FALSE}
+#Set global echo to true
+knitr::opts_chunk$set(echo = TRUE)
+```
 
-## Loading and preprocessing the data
 ## Get the feel of the data
 
 ```{r readData}
@@ -21,6 +24,8 @@ summary(activity_data)
 head(activity_data)
 
 ```
+
+
 
 ## What is mean total number of steps taken per day?
 ```{r prob1}
@@ -66,8 +71,7 @@ median_before=median(d$"Total_Steps")
 print("Median total steps")
 print(median_before)
 ```
-
-## What is the average daily activity pattern?
+# What is the average daily activity pattern?
 ```{r prob2}
 mean_d=data.frame(sapply(split(activity_data,activity_data$interval),function(chunk) mean(chunk$steps,na.rm = T)))
 names(mean_d)=c("Mean_Steps")
@@ -89,7 +93,7 @@ print(max_interval)
 
 ```
 
-## Imputing missing values
+# Imputing missing values
 ```{r prob3}
 
 #Let's check how many rows have missing data
